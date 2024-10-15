@@ -135,23 +135,65 @@
         fetchFareDetailsAndInsertTicket();
 
         document.getElementById('print').addEventListener('click', function () {
-            // Fetch values from the input fields
-            const from = document.querySelector('.second').value;
-            const to = document.querySelector('.third').value;
-            const fare = document.querySelector('.fourth').value;
+        // Create a new jsPDF instance
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
 
-            const inputText = `from: ${from}\nto: ${to}\nfare: ${fare}\n`;
+        // Get the page width
+        const pageWidth = doc.internal.pageSize.getWidth();
+        
 
-            // Create a new jsPDF instance
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
+        // Set up the ticket styling
+        doc.setFontSize(32);
+        doc.setFont("helvetica", "bold");
 
-            // Add text to the PDF
-            doc.text(inputText, 10, 10);
+        // Center align the Ticket";
+        const title = "Nammude Ticket";
+        const titleWidth = doc.getTextWidth(title);
+        doc.text(title, (pageWidth - titleWidth) / 2, 20);
 
-            // Save the generated PDF
-            doc.save('ticket.pdf');
-        });
+
+        // Set the font back to normal and size to 16
+        doc.setFontSize(16);
+        doc.setFont("helvetica", "normal");
+
+        const ticketNO = `TicketID:      ${ticketId}`;
+        doc.text(ticketNO.toString(), (155) / 2, 50);
+
+
+        const now = new Date();
+        const dateText = `Date:           ${now.toLocaleDateString()}`;
+        const timeText = `Time:           ${now.toLocaleTimeString()}`;
+        doc.text(dateText, (155) / 2, 110);
+        doc.text(timeText, (155) / 2, 125);
+
+        // Center align the other text
+        const fromText = `From:           ${from}`;
+        const fromTextWidth = doc.getTextWidth(fromText);
+        doc.text(fromText, (155) / 2, 65);
+
+        const toText = `To:               ${to}`;
+        const toTextWidth = doc.getTextWidth(toText);
+        doc.text(toText, (155)/ 2, 80);
+
+        const fareText = `Fare:            ${fare}`;
+        const fareTextWidth = doc.getTextWidth(fareText);
+        doc.text(fareText, (155) / 2, 95);
+
+        // Generate QR code for the ticket ID
+        const qr = qrcode(4, 'L');
+        qr.addData(`Ticket ID: ${ticketId}`);
+        qr.make();
+
+        // Get the base64 image data of the QR code
+        const qrCodeImage = qr.createDataURL();
+
+        // Add the QR code image to the PDF
+        doc.addImage(qrCodeImage, 'PNG', (pageWidth - 75) / 2, 140, 80, 80);
+
+        // Save the generated PDF with the name 'Metroticket.pdf'
+        doc.save('Metroticket.pdf');
+    });
     </script>
 </body>
 </html>
