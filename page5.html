@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>page5</title>
-    <link rel="stylesheet" href="./page5.css" />
+    <link
+    rel="stylesheet";
+    href="./page5.css";
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubbler+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bungee+Shade&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="inner">
@@ -31,7 +42,7 @@
             <h3 id="okbtn">PRINT</h3>
         </div>
 
-        <div class="home">
+        <div class="home"></div>
             <a href="./index.html" style="text-decoration: none;">
                 <h3 id="hmebtn">HOME</h3>
             </a>
@@ -42,34 +53,48 @@
         <p><span class="nammude">nammude</span><br><span class="metro">METRO</span></p>
     </footer>
 
-    <div id="qrcode"></div>
-    
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+    <div id="four"></div>
+    <div id="five"></div>
+    <div id="six"></div>
+    <div id="seven"></div>
+    <div id="eight"></div>
+    <div id="nine"></div>
+    <div id="ten"></div>
+    <div id="eleven"></div>
+    <div id="twelve"></div>
+    <div id="thirteen"></div>
+    <div id="fourteen"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
     <script type="module" crossorigin="anonymous">
         import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
         
         const supabaseUrl = 'https://owimaafcnxffuupkgcej.supabase.co';
-        const supabaseAnonKey = 'YOUR_SUPABASE_ANON_KEY';
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im93aW1hYWZjbnhmZnV1cGtnY2VqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjg4MjEwNzQsImV4cCI6MjA0NDM5NzA3NH0.cv3cnv77GJ--TZQPrhA4wNnfwSfR3W1QrWCyLl2u88I';
         const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
         async function fetchFareDetailsAndInsertTicket() {
+            // Fetching from local storage for 'from' and 'to'
             const from = localStorage.getItem('from');
             const to = localStorage.getItem('to');
             
             try {
+                // Querying Supabase to fetch Fares based on 'from' and 'to' (start and end destinations)
                 const { data, error } = await supabase
                     .from('Fares')
                     .select('F_id, Start_des, End_des, Price')
                     .eq('Start_des', from)
                     .eq('End_des', to)
-                    .limit(1);
+                    .limit(1);  // Limiting the result to one record
 
                 if (error) {
                     console.error('Error fetching fare data:', error);
                     return;
                 }
 
+                // If data is available, populate the fields and insert the ticket
                 if (data && data.length > 0) {
                     const fareDetails = data[0];
                     document.querySelector('.first').value = fareDetails.F_id;
@@ -77,6 +102,7 @@
                     document.querySelector('.third').value = fareDetails.End_des;
                     document.querySelector('.fourth').value = fareDetails.Price;
 
+                    // Insert the fare ID into the Tickets table
                     await insertTicket(fareDetails.F_id);
                 } else {
                     console.log('No fare data found for the given route.');
@@ -86,11 +112,14 @@
             }
         }
 
+        // Function to insert ticket into the Tickets table
         async function insertTicket(fareId) {
             try {
                 const { data, error } = await supabase
                     .from('Tickets')
-                    .insert([ { "Fare_id": fareId } ]);
+                    .insert([
+                        { "Fare_id": fareId } // Insert Fare_id into Tickets table
+                    ]);
 
                 if (error) {
                     console.error('Error inserting ticket:', error);
@@ -102,6 +131,7 @@
             }
         }
 
+        // Call the function to fetch fare details and insert ticket on page load
         fetchFareDetailsAndInsertTicket();
 
         document.getElementById('print').addEventListener('click', function () {
