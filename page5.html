@@ -68,7 +68,6 @@
     <div id="thirteen"></div>
     <div id="fourteen"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
     <script type="module" crossorigin="anonymous">
         import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
         
@@ -137,30 +136,32 @@
 
         document.getElementById('print').addEventListener('click', function () {
             // Fetch values from the input fields
+            const ticketId = document.querySelector('.first').value;
             const from = document.querySelector('.second').value;
             const to = document.querySelector('.third').value;
             const fare = document.querySelector('.fourth').value;
-            const ticketId = document.querySelector('.first').value;
 
+            // Get the current date and time
             const now = new Date();
             const date = now.toLocaleDateString();
             const time = now.toLocaleTimeString();
 
-            const inputText = `Ticket ID: ${ticketId}\nFrom: ${from}\nTo: ${to}\nFare: ${fare}\nDate: ${date}\nTime: ${time}`;
+            // Content to be added to the PDF
+            const ticketDetails = `Ticket ID: ${ticketId}\nFrom: ${from}\nTo: ${to}\nFare: ${fare}\nDate: ${date}\nTime: ${time}`;
 
             // Create a new jsPDF instance
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
-            // Add text to the PDF
-            doc.text(inputText, 10, 10);
+            // Add ticket details to the PDF
+            doc.text(ticketDetails, 10, 10);
 
             // Generate QR code for ticket details
             const qr = qrcode(4, 'L');
-            qr.addData(inputText);  // Add all ticket details into the QR code
+            qr.addData(ticketDetails);  // Add ticket details to the QR code
             qr.make();
 
-            // Add the QR code to the PDF
+            // Add the QR code to the PDF as an image
             const qrCodeImage = qr.createDataURL();
             doc.addImage(qrCodeImage, 'PNG', 150, 50, 40, 40);  // Position QR code on the PDF
 
