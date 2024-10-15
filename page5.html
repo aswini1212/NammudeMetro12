@@ -136,34 +136,18 @@
 
         document.getElementById('print').addEventListener('click', function () {
             // Fetch values from the input fields
-            const ticketId = document.querySelector('.first').value;
             const from = document.querySelector('.second').value;
             const to = document.querySelector('.third').value;
             const fare = document.querySelector('.fourth').value;
 
-            // Get the current date and time
-            const now = new Date();
-            const date = now.toLocaleDateString();
-            const time = now.toLocaleTimeString();
-
-            // Content to be added to the PDF
-            const ticketDetails = `Ticket ID: ${ticketId}\nFrom: ${from}\nTo: ${to}\nFare: ${fare}\nDate: ${date}\nTime: ${time}`;
+            const inputText = `from: ${from}\nto: ${to}\nfare: ${fare}\n`;
 
             // Create a new jsPDF instance
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
-            // Add ticket details to the PDF
-            doc.text(ticketDetails, 10, 10);
-
-            // Generate QR code for ticket details
-            const qr = qrcode(4, 'L');
-            qr.addData(ticketDetails);  // Add ticket details to the QR code
-            qr.make();
-
-            // Add the QR code to the PDF as an image
-            const qrCodeImage = qr.createDataURL();
-            doc.addImage(qrCodeImage, 'PNG', 150, 50, 40, 40);  // Position QR code on the PDF
+            // Add text to the PDF
+            doc.text(inputText, 10, 10);
 
             // Save the generated PDF
             doc.save('ticket.pdf');
