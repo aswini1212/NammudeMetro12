@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page5</title>
+    <link
+    rel="stylesheet";
+    href="./page5.css";
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubbler+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bungee+Shade&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="inner">
+        <h3 class="nammude1">nammude</h3>
+        <h3 class="ticket">TICKET</h3>
+
+        <h4 id="id">Id</h4>
+        <input type="text" class="first" value="" disabled>
+
+        <h4 id="from">From</h4>
+        <input type="text" class="second" value="" disabled>
+
+        <h4 id="to">To</h4>
+        <input type="text" class="third" value="" disabled>
+
+        <h4 id="fare">Fare</h4>
+        <input type="text" class="fourth" value="" disabled>
+
+        <div class="ok" id="print">
+            <h3 id="okbtn">PRINT</h3>
+        </div>
+
+        <div class="home"></div>
+            <a href="./index.html" style="text-decoration: none;">
+                <h3 id="hmebtn">HOME</h3>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p><span class="nammude">nammude</span><br><span class="metro">METRO</span></p>
+    </footer>
+
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+    <div id="four"></div>
+    <div id="five"></div>
+    <div id="six"></div>
+    <div id="seven"></div>
+    <div id="eight"></div>
+    <div id="nine"></div>
+    <div id="ten"></div>
+    <div id="eleven"></div>
+    <div id="twelve"></div>
+    <div id="thirteen"></div>
+    <div id="fourteen"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        // Fetch the values from local storage
+        const fare = localStorage.getItem('fare_price');
+        const from = localStorage.getItem('from');
+        const to = localStorage.getItem('to');
+
+        // Display the values in the input fields
+        document.querySelector('.second').value = from || '';
+        document.querySelector('.third').value = to || '';
+        document.querySelector('.fourth').value = fare || '';
+
+        // Optional: Generate a random ID and display it (if needed)
+        const ticketId = Math.floor(Math.random() * 1000000);
+        document.querySelector('.first').value = ticketId;
+
+
+        document.getElementById('print').addEventListener('click', function () {
+            // Get the input text
+            const inputText = `from: ${from}\nto: ${to}\nfare: ${fare}\n`
+
+            // Create a new jsPDF instance
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Add text to the PDF
+            doc.text(inputText, 10, 10);
+
+            // Save the generated PDF
+            doc.save('ticket.pdf');
+        });
+    </script>
+</body>
+</html>

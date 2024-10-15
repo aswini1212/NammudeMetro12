@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link
+    rel="stylesheet";
+    href="./page2.css";
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubbler+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bungee+Shade&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="heading">Let's Sign Up</h1>
+
+    <label class="name" for="fname">Name</label>
+    <input type="text" id="fname" name="fname">
+
+    <label class="pswd" for="pass">Password</label>
+    <input type="text" id="pass" name="pass">
+
+    <label class="phone" for="phne">Phone no</label>
+    <input type="text" id="phne" name="phne">
+
+    <div class="ok">
+        <a href="./page4.html" style="text-decoration: none;">
+            <h3 id="okbtn">OK</h3>
+        </a>
+    </div>
+
+    <footer>
+        <p><span class="nammude">nammude</span><br><span class="metro">METRO</span></p>
+    </footer>
+
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+    <div id="four"></div>
+    <div id="five"></div>
+    <div id="six"></div>
+    <div id="seven"></div>
+    <div id="eight"></div>
+    <div id="nine"></div>
+    <div id="ten"></div>
+    <div id="eleven"></div>
+    <div id="twelve"></div>
+    <div id="thirteen"></div>
+    <div id="fourteen"></div>
+    <script type = "module" crossorigin="anonymous">
+        // Import Supabase (assuming you have access to the Supabase library)
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
+
+// Initialize Supabase
+const supabaseUrl = 'https://owimaafcnxffuupkgcej.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im93aW1hYWZjbnhmZnV1cGtnY2VqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjg4MjEwNzQsImV4cCI6MjA0NDM5NzA3NH0.cv3cnv77GJ--TZQPrhA4wNnfwSfR3W1QrWCyLl2u88I';
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+document.getElementById('okbtn').addEventListener('click', async () => {
+    const name = document.getElementById('fname').value;
+    const password = document.getElementById('pass').value;
+    const phone = document.getElementById('phne').value;
+    console.log("helli")
+    // Insert user into the users table
+    const { data, error } = await supabase
+        .from('Passenger')
+        .insert([{ P_Name: name, Password: password, Phone_No: phone }]);
+    
+    if (error) {
+        console.error('Error inserting user:', error);
+    } else {
+        console.log('User added:', data);
+        // Optionally redirect or show a success message
+        window.location.href = './page4.html'; // Redirect to next page
+    }
+});
+
+
+    </script>
+
+</body>
+</html>
