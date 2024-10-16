@@ -1,0 +1,178 @@
+* {
+    background-color: rgba(197, 242, 234, 0.72);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@keyframes hiThere {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px) rotate(0deg);  
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0px) rotate(5deg); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px) rotate(0deg);  
+    }
+}
+
+body {
+    font-family: "Calistoga", serif;
+    background-color: rgba(197, 242, 234, 0.72);
+    color: rgba(50, 28, 85, 1);
+    padding: 20px;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: rgba(50, 28, 85, 1);
+    font-family: "Alfa Slab One", serif;
+    font-weight: 400;
+    font-size: 50px;
+    background: transparent;
+    margin-bottom: 30px; 
+}
+
+.faq-item {
+    margin-bottom: 15px;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    background-color: rgba(50, 28, 85, 1);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    outline: none;
+    transition: background-color 0.3s ease;
+    font-family: "Bungee Shade", sans-serif;
+}
+
+.faq-question:hover {
+    background-color: rgba(28, 16, 54, 1);
+}
+
+.faq-answer {
+    padding: 15px;
+    background-color: rgba(50, 28, 85, 0.2);
+    border-radius: 25px;
+    display: none;
+    margin-top: 10px;
+}
+
+.faq-answer p {
+    font-size: 16px;
+}
+
+/* Styling for the table */
+.station-helpline {
+    margin-top: 30px;
+}
+
+.station-helpline h2 {
+    text-align: center;
+    color: rgba(50, 28, 85, 1);
+    font-family: "Alfa Slab One", serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: rgba(197, 242, 234, 0.5);
+}
+
+table, th, td {
+    border: 1px solid rgba(50, 28, 85, 1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    font-size: 16px;
+    font-family: "Calistoga", serif;
+    color: rgba(50, 28, 85, 1);
+}
+
+th {
+    background-color: rgba(50, 28, 85, 1);
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(50, 28, 85, 0.1);
+}
+
+tr:hover {
+    background-color: rgba(50, 28, 85, 0.2);
+}
+
+/* Button hover and animations */
+.ok {
+    background-color: rgba(50, 28, 85, 1);
+    width: 200px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    left: 650px;
+    top: 600px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.ok:hover {
+    transform: scale(0.7);
+}
+
+#okbtn {
+    font-size: 35px;
+    font-family: "Bubbler One", sans-serif;
+    font-weight: 400;
+    background: transparent;
+    text-align: center;
+    position: relative;
+    left: -7px;
+    color: whitesmoke;
+}
+
+/* Miscellaneous position and circle elements */
+#one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #ten, #eleven, #twelve, #thirteen, #fourteen {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(50, 28, 85, 1);
+    opacity: 0.5;
+    position: absolute;
+}
+
+#one { left: 100px; top: 100px; }
+#two { left: 250px; top: 300px; }
+#three { left: 50px; top: 500px; }
+#four { left: 150px; top: 800px; }
+#five { left: 500px; top: 650px; }
+#six { left: 700px; top: 800px; }
+#seven { left: 1100px; top: 750px; }
+#eight { left: 500px; top: 30px; }
+#nine { left: 900px; top: 80px; }
+#ten { left: 1300px; top: 20px; }
+#eleven { left: 650px; top: 300px; }
+#twelve { left: 800px; top: 500px; }
+#thirteen { left: 1300px; top: 500px; }
+#fourteen { left: 1450px; top: 270px; }

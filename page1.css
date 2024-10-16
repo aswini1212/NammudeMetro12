@@ -117,7 +117,7 @@
     
 }
 
-.chat-button {
+.faq-button {
     position: fixed;
     bottom: 20px; 
     right: 20px; 
@@ -134,10 +134,10 @@
     opacity:0.5;
 }
 
-.chat-button::before {
-    content: '💬'; 
+.faq-button::before {
+   content: '💬'; 
 }
-.chat-button:hover {
+.faq-button:hover {
    
     transform: scale(1.1); 
 }

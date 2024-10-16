@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nammude Metro FAQ</title>
+    <link rel="stylesheet" href="faq.css">
+</head>
+<body>
+    <div class="faq-container">
+        <h1>Nammude Metro - Frequently Asked Questions</h1>
+
+        <div class="faq-item">
+            <button class="faq-question">What are the operating hours of Nammude Metro?</button>
+            <div class="faq-answer">
+                <p>Nammude Metro operates from 6:00 AM to 11:00 PM every day, including weekends and public holidays.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">How can I buy tickets for the metro?</button>
+            <div class="faq-answer">
+                <p>You can purchase tickets through the Nammude Metro mobile app, from ticket counters at stations, or through automated ticket vending machines.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Are there any discounts available for students or senior citizens?</button>
+            <div class="faq-answer">
+                <p>Yes, Nammude Metro offers discounted fares for students, senior citizens, and differently-abled passengers. You can avail these discounts by showing a valid ID at the ticket counter.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Is there parking available at metro stations?</button>
+            <div class="faq-answer">
+                <p>Most Nammude Metro stations have dedicated parking facilities. However, parking availability may vary depending on the station.</p>
+            </div>
+        </div>
+
+        <!-- New Table Section -->
+        <div class="station-helpline">
+            <h2>Station Helpline Information</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>S_Name</th>
+                        <th>S_Helpline</th>
+                        <th>S_Head</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aluva</td>
+                        <td>9995050587</td>
+                        <td>Madhu Balan</td>
+                    </tr>
+                    <tr>
+                        <td>Ambattukavu</td>
+                        <td>9995134671</td>
+                        <td>Rithick S</td>
+                    </tr>
+                    <tr>
+                        <td>Changampuzha Park</td>
+                        <td>8719006754</td>
+                        <td>Raja Krishna Paberiya</td>
+                    </tr>
+                    <tr>
+                        <td>Cochin University</td>
+                        <td>9786211450</td>
+                        <td>Yadhu T R</td>
+                    </tr>
+                    <tr>
+                        <td>Companypady</td>
+                        <td>9387040025</td>
+                        <td>Anugraha R S</td>
+                    </tr>
+                    <tr>
+                        <td>Edapally</td>
+                        <td>9965120090</td>
+                        <td>Illiyas A</td>
+                    </tr>
+                    <tr>
+                        <td>Kalamassery</td>
+                        <td>9956215679</td>
+                        <td>Adhina Anup</td>
+                    </tr>
+                    <tr>
+                        <td>Muttom</td>
+                        <td>8129593456</td>
+                        <td>Devika P</td>
+                    </tr>
+                    <tr>
+                        <td>Palarivattom</td>
+                        <td>8855120982</td>
+                        <td>Adarsh Nair</td>
+                    </tr>
+                    <tr>
+                        <td>Pathadipalam</td>
+                        <td>8347845761</td>
+                        <td>Laghima S</td>
+                    </tr>
+                    <tr>
+                        <td>Pulinchodu</td>
+                        <td>8129179191</td>
+                        <td>Ashokan T P</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    <script>
+        const faqItems = document.querySelectorAll('.faq-question');
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+
+</body>
+</html>
