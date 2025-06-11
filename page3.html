@@ -54,11 +54,11 @@
     <div id="fourteen"></div>
 
     <script type = "module" crossorigin="anonymous">
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
-const supabaseUrl = 'https://wgcxytmughpalnsczopw.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndnY3h5dG11Z2hwYWxuc2N6b3B3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk1ODI2MjYsImV4cCI6MjA2NTE1ODYyNn0.JguujSgFaxLWuYfuIOWV5sgA9MwJGgLLjtwM-DkebPw';
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
-document.getElementById('okbtn').addEventListener('click', async () => {
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
+    const supabaseUrl = 'https://wgcxytmughpalnsczopw.supabase.co';
+    const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndnY3h5dG11Z2hwYWxuc2N6b3B3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk1ODI2MjYsImV4cCI6MjA2NTE1ODYyNn0.JguujSgFaxLWuYfuIOWV5sgA9MwJGgLLjtwM-DkebPw';
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+    document.getElementById('okbtn').addEventListener('click', async () => {
     const name = document.getElementById('fname').value.trim();
     const password = document.getElementById('pass').value.trim();
 
@@ -74,7 +74,7 @@ document.getElementById('okbtn').addEventListener('click', async () => {
             .select("*")
             .eq("P_Name", name)
             .eq("Password", password);
-            //aswiniiiiiiiiiiiiiiiiii
+            
         if (error) {
             console.error('Error logging in:', error.message);
             alert('Login failed: ' + error.message);
