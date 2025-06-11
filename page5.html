@@ -72,8 +72,8 @@
     <script type="module" crossorigin="anonymous">
         import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
         
-        const supabaseUrl = 'https://owimaafcnxffuupkgcej.supabase.co';
-        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im93aW1hYWZjbnhmZnV1cGtnY2VqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjg4MjEwNzQsImV4cCI6MjA0NDM5NzA3NH0.cv3cnv77GJ--TZQPrhA4wNnfwSfR3W1QrWCyLl2u88I';
+        const supabaseUrl = 'https://wgcxytmughpalnsczopw.supabase.co';
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndnY3h5dG11Z2hwYWxuc2N6b3B3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk1ODI2MjYsImV4cCI6MjA2NTE1ODYyNn0.JguujSgFaxLWuYfuIOWV5sgA9MwJGgLLjtwM-DkebPw';
         const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
         async function fetchFareDetailsAndInsertTicket() {
@@ -119,7 +119,7 @@
                 const { data, error } = await supabase
                     .from('Tickets')
                     .insert([
-                        { "Fare_id": fareId } // Insert Fare_id into Tickets table
+                        { "F_id": fareId } // Insert Fare_id into Tickets table
                     ]);
 
                 if (error) {
